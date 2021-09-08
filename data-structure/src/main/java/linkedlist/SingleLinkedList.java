@@ -18,12 +18,15 @@ public class SingleLinkedList<T> {
     }
 
     public void printAll() {
-        if (head != null) {
+        if (this.head != null) {
             Node<T> node = this.head;
-            while (node.next != null) {
-                node = node.next;
+
+            do {
                 System.out.println(node.data);
-            }
+                node = node.next;
+            } while (node.next != null);
+            System.out.println(node.data);
+
         }
     }
 
@@ -52,6 +55,8 @@ public class SingleLinkedList<T> {
             Node<T> nextNode = searchedNode.next;
             searchedNode.next = new Node<T>(data);
             searchedNode.next.next = nextNode;
+
+
         }
     }
 
@@ -63,12 +68,12 @@ public class SingleLinkedList<T> {
             return false;
         } else {
             Node<T> node = this.head;
-            if(node.data == isData) {
+            if (node.data == isData) {
                 this.head = this.head.next;
                 return true;
             } else {
                 while (node.next != null) {
-                    if(node.next.data == isData) {
+                    if (node.next.data == isData) {
                         node.next = node.next.next;
                         return true;
                     }
